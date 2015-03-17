@@ -234,6 +234,8 @@ BEGIN
         END
         MENUITEM "特征点",                         ID_MATCH_FEATURE_POINT
         MENUITEM "ICP",                         ID_MATCH_ICP
+        MENUITEM "BaseSTL",                     ID_32857
+        MENUITEM "CandidatePC",                 ID_ON_PointCloud
     END
     POPUP "测量误差"
     BEGIN
@@ -245,7 +247,7 @@ BEGIN
         MENUITEM "RANSAC",                      ID_RANSAC_COMPUTE
         MENUITEM "TOLERANCE",                   ID_TOLERANCE_COMPUTE
         MENUITEM "EXPORT_FEATURE",              ID_MUNE_EXPORT_RANSAC
-        MENUITEM "EXPORT_TOLERANCE",            ID_MENU_EXPORT_TORLERANCE
+        MENUITEM "Others",                      ID_MENU_EXPORT_TORLERANCE
     END
     POPUP "虚拟装配"
     BEGIN

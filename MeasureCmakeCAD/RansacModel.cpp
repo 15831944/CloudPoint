@@ -531,3 +531,12 @@ void RansacModel::OutPutFile(const char* fileName)
 	}
 	fout.close();
 }
+
+//void RansacModel::getInteractivePoints(vector<double>p)
+//{
+//	for(int i = 0;i<p.size();i++)
+//	{
+//		this->interPoints.push_back(p[i]);
+//		cout<<p[i]<<endl;
+//	}
+//}

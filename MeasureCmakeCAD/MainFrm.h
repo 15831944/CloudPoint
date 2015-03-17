@@ -81,6 +81,8 @@ public:
 	afx_msg void OnRansacCompute();
 	afx_msg void OnToleranceCompute();
 	afx_msg void OnEndMotionSim();
+	afx_msg void OnBase();
+	afx_msg void OnOnPointcloud();
 };
 
 

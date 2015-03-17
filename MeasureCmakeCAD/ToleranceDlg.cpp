@@ -256,7 +256,6 @@ void ToleranceDlg::OnBnClickedCalculator()
 
 		TolerOutPut tmp_toler_record;
 		vector<string> feature_name;
-		cout<<this->model->primitives[base]->shapeType<<endl;
 		if(base>-1)
 			feature_name.push_back(this->model->primitives[base]->shapeType);
 		if(surf>-1)
@@ -303,10 +302,10 @@ void ToleranceDlg::OutPutFile(const char* fileName)
 		cout<<tmp_id[0]<<endl;
 		for(int j=0;j<record_of_toler[i].correspond_fea().size();j++)
 		{
-			fout<<record_of_toler[i].correspond_fea()[j]<<" "<<tmp_id[j]<<endl;
+			fout<<record_of_toler[i].correspond_fea()[j]<<" "<<tmp_id[j]+1<<endl;
 		}
 		fout<<"# Base Feature \n";
-		fout<<record_of_toler[i].correspond_fea()[0]<<" "<<tmp_id[0]<<endl;
+		fout<<record_of_toler[i].correspond_fea()[0]<<" "<<tmp_id[0]+1<<endl;
 		fout<<"# Tolerance Value \n";
 		fout<<record_of_toler[i].tolerance()<<endl;
 	}
@@ -316,7 +315,7 @@ void ToleranceDlg::OnBnClickedButtonExportFile()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	// TODO: 在此添加命令处理程序代码
-	CFileDialog dlg(FALSE,NULL,NULL,OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT,"recognized model files(*.ra)|*.ra||",NULL);//创建输出文件对话框，设置输出文件名
+	CFileDialog dlg(FALSE,NULL,NULL,OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT,"calculated tolerance *.txt||",NULL);//创建输出文件对话框，设置输出文件名
 	if(dlg.DoModal()==IDOK)
 	{ 
 		CString strName=dlg.GetPathName();//得到文件路径

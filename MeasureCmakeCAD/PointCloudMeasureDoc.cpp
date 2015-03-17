@@ -931,6 +931,8 @@ void CPointCloudMeasureDoc::ICPMatchUpdatePolyData()
 
 	this->pEntity->pPointCloudDataSetCollection->ReplaceItem(numSource, pTransformFilter->GetOutput());
 
+	cout<<"2 Base computing ..."<<endl;
+	this->pEntity->CloudPoint2Base();
 	icp->Delete();
 	translation->Delete();
 	pTransformFilter->Delete();

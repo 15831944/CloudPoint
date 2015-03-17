@@ -20,6 +20,7 @@
 #include "XPMotionDlg.h"
 #include "RansacPara.h"
 #include "ToleranceDlg.h"
+#include "cellpicking.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -52,6 +53,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_COMMAND(ID_RANSAC_COMPUTE, &CMainFrame::OnRansacCompute)
 	ON_COMMAND(ID_TOLERANCE_COMPUTE, &CMainFrame::OnToleranceCompute)
 	ON_COMMAND(ID_END_MOTION_SIM, &CMainFrame::OnEndMotionSim)
+	ON_COMMAND(ID_32857, &CMainFrame::OnBase)
+	ON_COMMAND(ID_ON_PointCloud, &CMainFrame::OnOnPointcloud)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
@@ -567,146 +570,6 @@ void CMainFrame::OnZhuangPeiMotion()//yuki
 	//to do, change to the application problem
 	pDoc->AddMotionActionObserver(pDoc->pEntity->current_cad_num-1);
 
-	// TODO: Add your command handler code here
-	//CPointCloudMeasureDoc* pDoc = this->GetDocument();
-	//ASSERT_VALID(pDoc);
-	//if (!pDoc)
-	//	return;
-
-	//XPMotionDlg *xpmdlg;
-	//xpmdlg = new XPMotionDlg();
-
-	//int numModel = pDoc->pEntity->t_fileName.size();
-	//xpmdlg->SetNumModel( numModel);
-	//xpmdlg->model_name = pDoc->pEntity->t_fileName;
-
-	//vtkPolyData *poly1 = vtkPolyData::New();
-	//vtkPolyData *poly2 = vtkPolyData::New();
-	//vtkPolyData *poly3 = vtkPolyData::New();
-
-	//xpmdlg->DoModal();
-	////if(xpmdlg->DoModal()==IDOK)
-	////{
-	//	vector<int>::iterator itersize1;
-	//	itersize1 = pDoc->pEntity->surfacesize.begin()+xpmdlg->m_set_motion1;
-	//	vtkActorCollection      *mActorColletion1;
-
-	//	vector<int>::iterator itersize2;
-	//	itersize2 = pDoc->pEntity->surfacesize.begin()+xpmdlg->m_set_motion2;
-	//	vtkActorCollection      *mActorColletion2;
-
-	//	vector<int>::iterator itersize3;
-	//	itersize3 = pDoc->pEntity->surfacesize.begin()+xpmdlg->m_set_motion3;
-	//	vtkActorCollection      *mActorColletion3;
-
-	//	int count=0;
-
-	//	list<SurfaceConvertion*>::iterator iter;
-	//	vtkActor *pCurrentActor = NULL;
-	//	pDoc->pSurfacesCADActorColletion->InitTraversal();
-
-	//	if(itersize1 == pDoc->pEntity->surfacesize.begin())
-	//	{
-	//		for(iter = pDoc->pEntity->convert.surfaces.begin(); iter != pDoc->pEntity->convert.surfaces.end(); iter++)
-	//		{
-	//			pCurrentActor=pDoc->pSurfacesCADActorColletion->GetNextActor();
-	//			
-	//			mActorColletion1->AddItem(pCurrentActor);
-	//			//pCurrentActor->GetProperty()->SetColor(1,0,0);
-	//			count++;
-	//			if(count == *itersize1)
-	//			{
-	//				break;
-	//			}
-	//		}
-	//	}
-	//	else
-	//	{
-	//		for(iter = pDoc->pEntity->convert.surfaces.begin(); iter != pDoc->pEntity->convert.surfaces.end(); iter++)
-	//		{
-	//			pCurrentActor=pDoc->pSurfacesCADActorColletion->GetNextActor();
-	//			if(count >= *(itersize1 - 1))
-	//			{
-	//				mActorColletion1->AddItem(pCurrentActor);
-	//				//pCurrentActor->GetProperty()->SetColor(1,0,0);
-	//			}
-	//			count++;
-	//			if(count == *itersize1)
-	//			{
-	//				break;
-	//			}
-	//		}
-	//	}
-
-	//	if(itersize2 == pDoc->pEntity->surfacesize.begin())
-	//	{
-	//		for(iter = pDoc->pEntity->convert.surfaces.begin(); iter != pDoc->pEntity->convert.surfaces.end(); iter++)
-	//		{
-	//			pCurrentActor=pDoc->pSurfacesCADActorColletion->GetNextActor();
-	//			
-	//			mActorColletion2->AddItem(pCurrentActor);
-	//			//pCurrentActor->GetProperty()->SetColor(1,0,0);
-	//			count++;
-	//			if(count == *itersize2)
-	//			{
-	//				break;
-	//			}
-	//		}
-	//	}
-	//	else
-	//	{
-	//		for(iter = pDoc->pEntity->convert.surfaces.begin(); iter != pDoc->pEntity->convert.surfaces.end(); iter++)
-	//		{
-	//			pCurrentActor=pDoc->pSurfacesCADActorColletion->GetNextActor();
-	//			if(count >= *(itersize2 - 1))
-	//			{
-	//				mActorColletion2->AddItem(pCurrentActor);
-	//				
-	//				//pCurrentActor->GetProperty()->SetColor(1,0,0);
-	//			}
-	//			count++;
-	//			if(count == *itersize2)
-	//			{
-	//				break;
-	//			}
-	//		}
-	//	}
-
-	//	if(itersize3 == pDoc->pEntity->surfacesize.begin())
-	//	{
-	//		for(iter = pDoc->pEntity->convert.surfaces.begin(); iter != pDoc->pEntity->convert.surfaces.end(); iter++)
-	//		{
-	//			pCurrentActor=pDoc->pSurfacesCADActorColletion->GetNextActor();
-	//			
-	//			mActorColletion3->AddItem(pCurrentActor);
-	//			//pCurrentActor->GetProperty()->SetColor(1,0,0);
-	//			count++;
-	//			if(count == *itersize3)
-	//			{
-	//				break;
-	//			}
-	//		}
-	//	}
-	//	else
-	//	{
-	//		for(iter = pDoc->pEntity->convert.surfaces.begin(); iter != pDoc->pEntity->convert.surfaces.end(); iter++)
-	//		{
-	//			pCurrentActor=pDoc->pSurfacesCADActorColletion->GetNextActor();
-	//			if(count >= *(itersize3 - 1))
-	//			{
-	//				mActorColletion3->AddItem(pCurrentActor);
-	//				//pCurrentActor->GetProperty()->SetColor(1,0,0);
-	//			}
-	//			count++;
-	//			if(count == *itersize3)
-	//			{
-	//				break;
-	//			}
-	//		}
-	//	}
-	////}
-
-	//xpmdlg->DoModal();
 }
 
 void CMainFrame::OnRansacCompute()
@@ -781,4 +644,138 @@ void CMainFrame::OnEndMotionSim()
 
 	//to do, change to the application problem
 	pDoc->RemoveMotionActionObserver();
+}
+
+void CMainFrame::OnBase()
+{
+	// TODO: 在此添加命令处理程序代码
+	//************************************************
+	CPointCloudMeasureDoc* pDoc = this->GetDocument();
+	ASSERT_VALID(pDoc);
+	if (!pDoc)
+		return;
+
+	POSITION pos = pDoc->GetFirstViewPosition();
+	CPointCloudMeasureView *pCPointCloudMeasureView = NULL;
+
+	if (pos)
+	{
+		pCPointCloudMeasureView = (CPointCloudMeasureView *)pDoc->GetNextView(pos);
+	}
+	else  // return
+	{
+		ASSERT(FALSE);
+		return;
+	}
+	
+	vtkInteractorStyleTrackballCamera *style =  vtkInteractorStyleTrackballCamera::New();
+	pCPointCloudMeasureView->GetMFCWindow()->GetInteractor()->SetInteractorStyle(style);
+
+	vtkPolyData *pCurrentData;
+	pDoc->pEntity->pStlDataSetCollection->InitTraversal();
+	pCurrentData=pDoc->pEntity->pStlDataSetCollection->GetNextItem();
+	vtkSmartPointer<vtkPolyDataMapper> mapper =
+		vtkSmartPointer<vtkPolyDataMapper>::New();
+	mapper->SetInput(pCurrentData);
+	
+	vtkSmartPointer<vtkActor> actor =
+		vtkSmartPointer<vtkActor>::New();
+	actor->GetProperty()->SetColor(0,1,0); //green
+	actor->SetMapper(mapper);
+	
+	vtkSmartPointer<vtkRenderer> renderer =
+			vtkSmartPointer<vtkRenderer>::New();
+	vtkSmartPointer<vtkRenderWindow> renderWindow =
+			vtkSmartPointer<vtkRenderWindow>::New();
+	renderWindow->AddRenderer(renderer);
+	
+	vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor =
+			vtkSmartPointer<vtkRenderWindowInteractor>::New();
+	renderWindowInteractor->SetRenderWindow(renderWindow);
+	renderWindowInteractor->Initialize();
+	
+	// Set the custom stype to use for interaction.
+	vtkSmartPointer<MouseInteractorStyle> interstyle =
+			vtkSmartPointer<MouseInteractorStyle>::New();
+	interstyle->SetDefaultRenderer(renderer);
+	interstyle->Data = pCurrentData;
+	
+	renderWindowInteractor->SetInteractorStyle(interstyle);
+	
+	renderer->AddActor(actor);
+	renderer->ResetCamera();
+	
+	renderer->SetBackground(0,0,1); // Blue
+	
+	renderWindow->Render();
+	renderWindowInteractor->Start();
+
+	pDoc->pEntity->getInteractivePoints(interstyle->points);
+}
+
+void CMainFrame::OnOnPointcloud()
+{
+	// TODO: 在此添加命令处理程序代码
+	//************************************************
+	CPointCloudMeasureDoc* pDoc = this->GetDocument();
+	ASSERT_VALID(pDoc);
+	if (!pDoc)
+		return;
+
+	POSITION pos = pDoc->GetFirstViewPosition();
+	CPointCloudMeasureView *pCPointCloudMeasureView = NULL;
+
+	if (pos)
+	{
+		pCPointCloudMeasureView = (CPointCloudMeasureView *)pDoc->GetNextView(pos);
+	}
+	else  // return
+	{
+		ASSERT(FALSE);
+		return;
+	}
+
+	vtkInteractorStyleTrackballCamera *style =  vtkInteractorStyleTrackballCamera::New();
+	pCPointCloudMeasureView->GetMFCWindow()->GetInteractor()->SetInteractorStyle(style);
+
+	vtkPolyData *pCurrentData;
+	pDoc->pEntity->pPointCloudDataSetCollection->InitTraversal();
+	pCurrentData=pDoc->pEntity->pPointCloudDataSetCollection->GetNextItem();
+	vtkSmartPointer<vtkPolyDataMapper> mapper =
+		vtkSmartPointer<vtkPolyDataMapper>::New();
+	mapper->SetInput(pCurrentData);
+
+	vtkSmartPointer<vtkActor> actor =
+		vtkSmartPointer<vtkActor>::New();
+	actor->GetProperty()->SetColor(0,1,0); //green
+	actor->SetMapper(mapper);
+
+	vtkSmartPointer<vtkRenderer> renderer =
+		vtkSmartPointer<vtkRenderer>::New();
+	vtkSmartPointer<vtkRenderWindow> renderWindow =
+		vtkSmartPointer<vtkRenderWindow>::New();
+	renderWindow->AddRenderer(renderer);
+
+	vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor =
+		vtkSmartPointer<vtkRenderWindowInteractor>::New();
+	renderWindowInteractor->SetRenderWindow(renderWindow);
+	renderWindowInteractor->Initialize();
+
+	// Set the custom stype to use for interaction.
+	vtkSmartPointer<MouseInteractorStyle> interstyle =
+		vtkSmartPointer<MouseInteractorStyle>::New();
+	interstyle->SetDefaultRenderer(renderer);
+	interstyle->Data = pCurrentData;
+
+	renderWindowInteractor->SetInteractorStyle(interstyle);
+
+	renderer->AddActor(actor);
+	renderer->ResetCamera();
+
+	renderer->SetBackground(0,0,1); // Blue
+
+	renderWindow->Render();
+	renderWindowInteractor->Start();
+
+	pDoc->pEntity->getInteractivePointsPC(interstyle->points);
 }

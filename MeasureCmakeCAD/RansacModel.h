@@ -69,4 +69,15 @@ public:
 	vector<ShapePrimitivePara*> primitives;
 	vector<bool> outputMarks;
     vector<bool> modifyMarks;
+	//static double p1x;
+	//static double p1y;
+	//static double p1z;
+	//static double p2x;
+	//static double p2y;
+	//static double p2z;
+	//static double p3x;
+	//static double p3y;
+	//static double p3z;
+	//void getInteractivePoints(vector<double>p);
 };
+//double RansacModel::p1x=0;

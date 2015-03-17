@@ -214,13 +214,16 @@
 #define ID_32854                        32854
 #define ID_TORLERANCE                   32855
 #define ID_MENU_EXPORT_TORLERANCE       32856
+#define ID_32857                        32857
+#define ID_32858                        32858
+#define ID_ON_PointCloud                32859
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        323
-#define _APS_NEXT_COMMAND_VALUE         32857
+#define _APS_NEXT_COMMAND_VALUE         32860
 #define _APS_NEXT_CONTROL_VALUE         1070
 #define _APS_NEXT_SYMED_VALUE           314
 #endif

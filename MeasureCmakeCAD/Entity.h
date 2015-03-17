@@ -13,6 +13,8 @@
 #include "RansacModel.h"
 #include "IgesAndVtkModel.h"
 #include <string>
+#include "E:\Program Files\MATLAB\R2010b\extern\include\engine.h"
+#include "E:\Program Files\MATLAB\R2010b\extern\include\matrix.h"
 using namespace std;
 
 class Entity
@@ -27,6 +29,8 @@ public:
 	vtkStringArray *pStlCaseNameArray;
 	vtkStringArray *pPointCloudCaseNameArray;
 	RansacModel *recModels; //Recognized model
+	vector<double> interPoints;
+	vector<double> interPointsPC;
 	vector<IgesAndVtkModel*> cadModels;
 
 	int current_stl_part_num;//当前选择的STL模型数
@@ -53,8 +57,12 @@ public:
 
 	void setInteractiveStyleMode(ViewMode mode);
 	ViewMode getInteractiveStyleMode();
+	void getInteractivePoints(vector<double>p);
+	void CloudPoint2Base();
+	void getInteractivePointsPC(vector<double>p);
 protected:
 private:
+	double* CrossDot();
 };
 
 #endif
